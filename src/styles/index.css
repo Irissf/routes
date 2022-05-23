@@ -6,3 +6,15 @@ body{
     margin: 0;
     background-color: #d8e2dc;
 }
+
+.noEnc__link{
+    font-size: 1.5em;
+    background-color: #9d8189;
+    color: #d8e2dc;
+    text-decoration: none;
+
+    height: max-content;
+    border-radius: 5px;
+    padding:5px 10px;
+
+}
