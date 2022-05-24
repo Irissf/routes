@@ -10,13 +10,13 @@ export const useFetch = (url) => {
     useEffect(() => {
 
         setLoading(true);
-        fetch(url)
+        fetch(url) 
             .then(res => res.json())
-            .then(data => setData(data))
+            .then((data) => setData(data)) //en data está nuestro array con los objetos
             .catch(e => setError('Error de servidor'))
             .finally(()=>setLoading(false))
        
     }, [url]);
 
-    return (data, error, loading)
+    return {data, error, loading};
 }

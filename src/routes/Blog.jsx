@@ -1,15 +1,26 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import { useFetch } from '../hooks/useFetch'
 
 const Blog = () => {
 
   const {data, error, loading} = useFetch('https://jsonplaceholder.typicode.com/posts');
 
+  if(loading){
+    <h2>Loading...</h2>
+  }
+
+  if(error !== ""){
+    <p>{error}</p>
+  }
 
   return (
     <div>
-      Blog
+    <h1>Blog</h1>
+    {
+      data.map((item) => (
+        <h4 key={item.id}>{item.id} - {item.title}</h4>
+      ))
+    }
     </div>
   )
 }
