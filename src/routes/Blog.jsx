@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch'
 
 const Blog = () => {
@@ -18,7 +19,9 @@ const Blog = () => {
     <h1>Blog</h1>
     {
       data.map((item) => (
-        <h4 key={item.id}>{item.id} - {item.title}</h4>
+        <h4 key={item.id}>
+          <Link to={`/blog/${item.id}`}>{item.id} - {item.title}</Link>
+        </h4>
       ))
     }
     </div>
