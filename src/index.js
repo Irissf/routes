@@ -9,6 +9,7 @@ import Blog from './routes/Blog'
 import Contactos from './routes/Contactos'
 import Inicio from './routes/Inicio';
 import NoEncontrada from './routes/NoEncontrada';
+import Post from './routes/Post';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,6 +22,8 @@ root.render(
           <Route index element={<Inicio/>}></Route>
           {/* rutas anidadas */}
           <Route path='blog' element={<Blog/>}/>
+          {/* ruta dinamica :id es la variable */}
+          <Route path='blog/:id' element={<Post/>}/>
           <Route path='contactos' element={<Contactos/>}/>
 
           {/* por si ponen ruta que no existe */}
