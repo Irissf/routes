@@ -22,12 +22,28 @@ const Blog = () => {
     <p>{error}</p>
   }
 
+  const handleChange = e =>{
+    let filter = e.target.value;
+    if(filter){
+      setSearchParams({filter});
+    }else{
+      setSearchParams({});
+    }
+  }
+
   return (
     <div>
     <h1>Blog</h1>
-
+    <input type="text" value={searchParams.get('filter') || ""}
+    onChange={handleChange}></input>
     {
-      data.map((item) => (
+      data.filter(item => {
+        let filter = searchParams.get('filter')
+        if(!filter) return true //si no hay filtro lo devuelve todo
+        
+        let title = item.title.toLowerCase()
+        return title.startsWith(filter.toLowerCase())
+      }).map((item) => ( //primero aplicamos el filtro y luego pintamos el map
         <h4 key={item.id}>
           <Link to={`/blog/${item.id}`}>{item.id} - {item.title}</Link>
         </h4>
