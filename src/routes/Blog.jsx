@@ -32,7 +32,7 @@ const Blog = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
     <h1>Blog</h1>
     <input type="text" value={searchParams.get('filter') || ""}
     onChange={handleChange}></input>
