@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 const Contactos = () => {
   return (
     <div>
-        Contactos
+        <h1>Lista de Contactos</h1>
     </div>
   )
 }
