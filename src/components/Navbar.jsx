@@ -1,14 +1,21 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { UserContext } from '../context/UserProvider';
 
 import './../styles/navbar.css'
 
 const Navbar = () => {
+
+  const {user} = useContext(UserContext);
+
   return (
     <nav className='nav__navbar'>
-        <NavLink className='nav__link' to="/">Inicio</NavLink>
-        <NavLink className='nav__link' to="/contactos">Contactos</NavLink>
-        <NavLink className='nav__link' to="/blog">Blog</NavLink>
+      <Link className='nav__link' to="/">
+        {user ? '❤ Iris ❤':'Sin conexión'}
+      </Link>
+      <NavLink className='nav__link' to="/">Inicio</NavLink>
+      <NavLink className='nav__link' to="/contactos">Contactos</NavLink>
+      <NavLink className='nav__link' to="/blog">Blog</NavLink>
     </nav>
   )
 }

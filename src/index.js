@@ -11,25 +11,30 @@ import Inicio from './routes/Inicio';
 import NoEncontrada from './routes/NoEncontrada';
 import Post from './routes/Post';
 
+//provider
+import UserProvider from './context/UserProvider'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <BrowserRouter>
-      <Routes>
-      {/* APP en este caso, funciona como una plantilla */}
-        <Route path='/' element={<App/>}>
-          {/* Index Lo que se pinta en la raiz */}
-          <Route index element={<Inicio/>}></Route>
-          {/* rutas anidadas */}
-          <Route path='blog' element={<Blog/>}/>
-          {/* ruta dinamica :id es la variable */}
-          <Route path='blog/:id' element={<Post/>}/>
-          <Route path='contactos' element={<Contactos/>}/>
+      <UserProvider>
+        <Routes>
+        {/* APP en este caso, funciona como una plantilla */}
+          <Route path='/' element={<App/>}>
+            {/* Index Lo que se pinta en la raiz */}
+            <Route index element={<Inicio/>}></Route>
+            {/* rutas anidadas */}
+            <Route path='blog' element={<Blog/>}/>
+            {/* ruta dinamica :id es la variable */}
+            <Route path='blog/:id' element={<Post/>}/>
+            <Route path='contactos' element={<Contactos/>}/>
 
-          {/* por si ponen ruta que no existe */}
-          <Route path='*' element={<NoEncontrada/>}></Route>
-        </Route>
-      </Routes>
+            {/* por si ponen ruta que no existe */}
+            <Route path='*' element={<NoEncontrada/>}></Route>
+          </Route>
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
 );
 

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import Navbar from '../components/Navbar'
+import React, { useContext, useState } from 'react'
+import { UserContext } from '../context/UserProvider';
 
 const Inicio = () => {
 
-  const {user, setUser} = useState(false);
+  const {user, signIn, singOut} = useContext(UserContext);
 
   return (
     <div className='container'>
@@ -13,7 +13,11 @@ const Inicio = () => {
             user ? 'conectado' : 'desconectado'
           }
         </h2>
-        <button onClick={() => setUser(true)}>Acceder</button>
+        {
+          user ? ( <button onClick={singOut}>Desconectar</button>)
+          : ( <button onClick={signIn}>Acceder</button>)
+        }
+       
     </div>
   )
 }
