@@ -13,6 +13,8 @@ import Post from './routes/Post';
 
 //provider
 import UserProvider from './context/UserProvider'
+import RutaProtegida from './routes/RutaProtegida';
+import VerificarUsuario from './components/VerificarUsuario';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,6 +31,13 @@ root.render(
             {/* ruta dinamica :id es la variable */}
             <Route path='blog/:id' element={<Post/>}/>
             <Route path='contactos' element={<Contactos/>}/>
+
+            {/* ruta protegida, primero se verifica, luego direcciona */}
+            <Route path='protegida' element={
+                <VerificarUsuario>
+                  <RutaProtegida/>
+                </VerificarUsuario>
+            }/>
 
             {/* por si ponen ruta que no existe */}
             <Route path='*' element={<NoEncontrada/>}></Route>

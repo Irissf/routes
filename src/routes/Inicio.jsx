@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserProvider';
 
 const Inicio = () => {
@@ -14,7 +15,7 @@ const Inicio = () => {
           }
         </h2>
         {
-          user ? ( <button onClick={singOut}>Desconectar</button>)
+          user ? (<div><button onClick={singOut}>Desconectar</button> <Link to="/protegida">ruta protegida</Link></div>)
           : ( <button onClick={signIn}>Acceder</button>)
         }
        
